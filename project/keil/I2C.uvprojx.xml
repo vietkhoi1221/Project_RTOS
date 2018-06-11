@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\lib\STM32F10x_StdPeriph_Driver\inc;..\..\lib\CMSIS\CM3\CoreSupport;..\..\lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm;..\..\project;..\..\lib\user\inc;..\..\lib\uart</IncludePath>
+              <IncludePath>..\..\lib\STM32F10x_StdPeriph_Driver\inc;..\..\lib\CMSIS\CM3\CoreSupport;..\..\lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm;..\..\project;..\..\lib\user\inc;..\..\lib\uart;..\..\lib\delay;..\..\lib\HCSR501</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -496,6 +496,11 @@
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\lib\uart\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>HCSR501.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\lib\HCSR501\HCSR501.c</FilePath>
             </File>
           </Files>
         </Group>

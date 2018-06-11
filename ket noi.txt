@@ -1,0 +1,7 @@
+arm stm32f103c8t6		HC_SRF05
+5v				VCC
+GND				GND
+TRIG				B14
+ECHO				B15
+
+note: nho cap 5v cho arm

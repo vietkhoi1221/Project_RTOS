@@ -43,3 +43,6 @@
 .\objects\user_gpio.o: ..\..\lib\user\inc\user_delay.h
 .\objects\user_gpio.o: ..\..\lib\uart\uart.h
 .\objects\user_gpio.o: ..\..\lib\uart\uart.h
+.\objects\user_gpio.o: ..\..\lib\HCSR501\HCSR501.h
+.\objects\user_gpio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\user_gpio.o: ..\..\lib\delay\delay.h

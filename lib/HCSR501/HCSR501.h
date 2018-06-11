@@ -1,0 +1,27 @@
+#ifndef __SR501_H
+#define __SR501_H
+#include "stm32f10x.h"
+#include "stdbool.h"
+#include "delay.h"
+//////////////////////////////////////////////////////////////////////////////////    
+//?????????,??????,??????????
+//ALIENTEK??STM32???
+//LED????      
+//????@ALIENTEK
+//????:www.openedv.com
+//????:2012/9/2
+//??:V1.0
+//????,?????
+//Copyright(C) ????????????? 2009-2019
+//All rights reserved                             
+//////////////////////////////////////////////////////////////////////////////////
+#define HCSR501_GPIO_Port GPIOC
+#define HCSR501_GPIO_Pin  GPIO_Pin_14
+#define HCSR501_GPIO_RCC_Periph RCC_APB2Periph_GPIOC
+
+
+void HCSR501_Init(void);//???
+bool HCSR501_Read_Data(void);
+
+                       
+#endif

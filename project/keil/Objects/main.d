@@ -43,3 +43,6 @@
 .\objects\main.o: ..\..\lib\user\inc\user_delay.h
 .\objects\main.o: ..\..\lib\uart\uart.h
 .\objects\main.o: ..\..\lib\uart\uart.h
+.\objects\main.o: ..\..\lib\HCSR501\HCSR501.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: ..\..\lib\delay\delay.h
