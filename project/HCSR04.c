@@ -1,52 +1,35 @@
 #include "HCSR04.h"
 
-float HCSR04_Read(void) 
-   {
-uint32_t time, timeout;
-float dis;
-/* Trigger low */
- //HCSR04_TRIGGER_LOW;
+// Hàm đọc HCSR04
+float HCSR04_Read(void){
+    uint32_t time, timeout;
+    float dis;
+    //Cho chân Trigger xuống mức thấp trong 2us
 	GPIO_WriteBit(HCSR04_TRIGGER_PORT, HCSR04_TRIGGER_PIN,Bit_RESET);
-		 
-/* delay_us 2 us */
-delay_us(2);
-/* Trigger high for 10us */
-//HCSR04_TRIGGER_HIGH;
-		 GPIO_WriteBit(HCSR04_TRIGGER_PORT, HCSR04_TRIGGER_PIN,Bit_SET);
-/* delay_us 10 us */
-delay_us(10);
-/* Trigger low */
-//HCSR04_TRIGGER_LOW;
-		  GPIO_WriteBit(HCSR04_TRIGGER_PORT, HCSR04_TRIGGER_PIN,Bit_RESET);
+    delay_us(2);
+    // Kéo chân Trigger lên mức cao trong 10us
+	GPIO_WriteBit(HCSR04_TRIGGER_PORT, HCSR04_TRIGGER_PIN,Bit_SET);
+    delay_us(10);
+    // Cho chân Trigger xuống mức thấp
+	GPIO_WriteBit(HCSR04_TRIGGER_PORT, HCSR04_TRIGGER_PIN,Bit_RESET);
 
-/* Give some time for response */
-timeout = HCSR04_TIMEOUT;
-while (HCSR04_ECHO_CHECK == Bit_RESET) 
-   {
-if (timeout-- == 0x00) 
-   {
-   
-   
-return -1;
-}
-}
+    /* Nhận thời gian mà sóng âm trả về*/
+    timeout = HCSR04_TIMEOUT;
+    while (HCSR04_ECHO_CHECK == Bit_RESET){
+        if (timeout-- == 0x00){
+            return -1;
+        }
+    }
 
-/* Start time */
-//time = 0;
-TIM_SetCounter(TIM4,0);
+    // Khởi tạo timer4
+    TIM_SetCounter(TIM4,0);
 
-/* Wait till signal is low */
-while (HCSR04_ECHO_CHECK == Bit_SET) 
-   {
-/* Increase time */
-//time++;
-		 time=TIM_GetCounter(TIM4);
-/* delay_us 1us */
-//delay_us(1);
-}
-
-/* Convert us to cm */
-dis = (float)time* HCSR04_NUMBER/2;// /58 ;//
-/* Return distance */
-return dis;
+    /* Chờ chân echo bằng 0, trong thời gian đó đọc giá trị timer4 */
+    while (HCSR04_ECHO_CHECK == Bit_SET){
+        time=TIM_GetCounter(TIM4);
+    }
+    // Tính khoảng cách, chia 2 vì có 2 lượt đi và về
+    dis = (float)time* HCSR04_NUMBER/2;
+    /* Trả về dis */
+    return dis;
 }
